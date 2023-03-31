@@ -5,6 +5,9 @@ CONFIG_GRUB_IMAGES=y
 CONFIG_PACKAGE_6in4=y
 CONFIG_PACKAGE_6rd=y
 CONFIG_PACKAGE_6to4=y
+CONFIG_PACKAGE_docker=y
+CONFIG_PACKAGE_dockerd=y
+CONFIG_PACKAGE_frpc=y
 # CONFIG_PACKAGE_boost is not set
 # CONFIG_PACKAGE_chinadns-ng is not set
 # CONFIG_PACKAGE_coreutils-base64 is not set
