@@ -16,7 +16,6 @@ cd openwrt && make menuconfig
 - 结束ctrl+d
 
 
-[![Stargazers over time](https://starchart.cc/shidahuilang/openwrt.svg)](https://starchart.cc/shidahuilang/openwrt)
  ### 鸣谢！
  感谢以下各位大佬（排名无分先后）<br />
 [`coolsnowwolf`]
