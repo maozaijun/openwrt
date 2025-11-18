@@ -161,3 +161,60 @@ CONFIG_boost-compile-visibility-hidden=y
 CONFIG_boost-runtime-shared=y
 CONFIG_boost-static-and-shared-libs=y
 CONFIG_boost-variant-release=y
+# ==========================================
+# OpenWrt 编译优化配置 (保留 Passwall 版)
+# ==========================================
+
+# --- 1. 移除冲突插件 (保留 Passwall，移除 OpenClash) ---
+# OpenClash 体积大且与 Passwall 功能重叠，既然保留 Passwall 则将其移除
+# CONFIG_PACKAGE_luci-app-openclash is not set
+
+# --- 2. 移除冗余 DNS (保留 MosDNS，移除 ChinaDNS-NG) ---
+# MosDNS 功能更强，两者同时存在容易导致端口冲突
+# CONFIG_PACKAGE_chinadns-ng is not set
+
+# --- 3. 移除 Ruby 语言环境 (极大减重) ---
+# 除非您有特定脚本依赖 Ruby，否则这是最大的空间占用源，全部移除
+# CONFIG_PACKAGE_libruby is not set
+# CONFIG_PACKAGE_ruby is not set
+# CONFIG_PACKAGE_ruby-bigdecimal is not set
+# CONFIG_PACKAGE_ruby-date is not set
+# CONFIG_PACKAGE_ruby-digest is not set
+# CONFIG_PACKAGE_ruby-enc is not set
+# CONFIG_PACKAGE_ruby-forwardable is not set
+# CONFIG_PACKAGE_ruby-pstore is not set
+# CONFIG_PACKAGE_ruby-psych is not set
+# CONFIG_PACKAGE_ruby-stringio is not set
+# CONFIG_PACKAGE_ruby-strscan is not set
+# CONFIG_PACKAGE_ruby-yaml is not set
+
+# --- 4. 移除过时的 IPv6 隧道协议 (保留原生 IPv6) ---
+# 家用宽带基本都是 Native IPv6，不需要这些 6in4/6to4 隧道协议
+# CONFIG_PACKAGE_6in4 is not set
+# CONFIG_PACKAGE_6rd is not set
+# CONFIG_PACKAGE_6to4 is not set
+# CONFIG_PACKAGE_kmod-sit is not set
+# CONFIG_PACKAGE_kmod-iptunnel4 is not set
+
+# --- 5. 移除企业级监控 SNMP ---
+# 家用不需要被 Zabbix 等软件远程监控
+# CONFIG_PACKAGE_libnetsnmp is not set
+# CONFIG_PACKAGE_snmpd is not set
+
+# --- 6. 移除多余的压缩工具 ---
+# 固件通常只需要 gzip，不需要 bzip2/xz/zstd 等额外的解压工具
+# CONFIG_PACKAGE_TAR_BZIP2 is not set
+# CONFIG_PACKAGE_TAR_XZ is not set
+# CONFIG_PACKAGE_TAR_ZSTD is not set
+# CONFIG_PACKAGE_bzip2 is not set
+# CONFIG_PACKAGE_libbz2 is not set
+# CONFIG_PACKAGE_liblzma is not set
+# CONFIG_PACKAGE_xz is not set
+# CONFIG_PACKAGE_xz-utils is not set
+
+# --- 7. (可选) 移除 Passwall 中可能不用的旧协议 ---
+# 如果您主要使用 Xray/Sing-box (Vless/Vmess/Trojan)，可以移除旧的 Trojan-Plus 和 SSR
+# 下面这几行如果您确定还在用 SSR 或旧版 Trojan，请不要添加
+# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus is not set
+# CONFIG_PACKAGE_trojan is not set
+# CONFIG_PACKAGE_trojan-plus is not set
