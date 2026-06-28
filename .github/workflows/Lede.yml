@@ -142,7 +142,7 @@ jobs:
         
         
     - name: 准备结束
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: 检测文件和对比上游版本
       run: |
