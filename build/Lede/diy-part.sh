@@ -86,7 +86,8 @@ export auto_kernel="true"
 export rootfs_size="2560"
 export kernel_usage="stable"
 
-
+export GOVERSION=unset
+export GOTOOLCHAIN=auto
 
 
 # 修改插件名字
