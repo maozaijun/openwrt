@@ -314,3 +314,8 @@ jobs:
             exit 1
           fi
         fi
+# 修改前 (产生警告的旧写法)：
+- uses: actions/checkout@v4
+
+# 修改后 (原生支持 Node 24 的新写法)：
+- uses: actions/checkout@v5
